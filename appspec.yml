@@ -6,6 +6,10 @@ files:
     destination: /opt/codedeploy/workdir
 
 hooks:
+  ApplicationStop:
+    - location: codedeploy-hooks/application_stop.sh
+      timeout: 120
+      runas: root
   BeforeInstall:
     - location: codedeploy-hooks/before_install.sh
       timeout: 300
