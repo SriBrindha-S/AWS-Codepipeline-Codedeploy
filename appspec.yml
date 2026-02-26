@@ -1,0 +1,27 @@
+version: 0.0
+os: linux
+
+files:
+  - source: /
+    destination: /opt/codedeploy/workdir
+
+hooks:
+  BeforeInstall:
+    - location: codedeploy-hooks/before_install.sh
+      timeout: 300
+      runas: root
+
+  AfterInstall:
+    - location: codedeploy-hooks/after_install.sh
+      timeout: 600
+      runas: root
+
+  ApplicationStart:
+    - location: codedeploy-hooks/application_start.sh
+      timeout: 300
+      runas: root
+
+  ValidateService:
+    - location: codedeploy-hooks/validate_service.sh
+      timeout: 300
+      runas: root
